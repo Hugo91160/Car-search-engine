@@ -1,0 +1,19 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* Background image while waiting for a search*/
+.bg-img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(../img/bg_img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+form {
+    width: 75%;
+}
