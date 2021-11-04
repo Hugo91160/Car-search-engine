@@ -16,6 +16,7 @@ Versions du modèle
 Prix gagnés
 Histoire modèle
 Infos constructeur
+Prédecesseurs et successeurs
 
 
 
