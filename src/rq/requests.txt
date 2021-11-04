@@ -25,3 +25,26 @@ select ?s ?ns where{
 ?s rdfs:label ?ns
 FILTER(langMatches(lang(?ns),"EN"))
 }
+
+
+=====================================================================================
+Requête pour les informations de base sur la voiture 
+SELECT  ?label ?brand ?abstract ?length ?height ?weight ?imagelink ?carname ?class (GROUP_CONCAT(?year, ", ") AS ?prod)
+WHERE 
+{
+OPTIONAL {?carname rdfs:label ?label.}
+OPTIONAL { ?carname dbo:thumbnail ?imagelink.}
+OPTIONAL { ?carname dbp:production ?year.}
+OPTIONAL { ?carname dbp:manufacturer ?brand.}
+OPTIONAL{ ?carname dbo:abstract ?abstract .}
+OPTIONAL{ ?carname dbp:class ?class .}
+OPTIONAL {?carname dbo:length ?length.}
+OPTIONAL {?carname dbo:height ?height.}
+OPTIONAL {?carname dbo:weight ?weight.}
+
+FILTER(?carname = <http://dbpedia.org/resource/Porsche_911> && lang(?label) = "en" && lang(?abstract) = "en")
+}
+GROUP BY ?imagelink ?label ?carname ?abstract ?brand ?class ?length ?height ?weight
+====================================================================================
+Requête pour récupérer les informations du constructeurs 
+
