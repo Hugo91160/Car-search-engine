@@ -1,0 +1,27 @@
+========================================================================================
+// Recuperer les vehicules du constructeur
+
+SELECT DISTINCT ?o WHERE{
+?o a dbo:Automobile . ?o dbo:manufacturer <%res> .
+}
+
+// Recuperer le constructeur vehicules
+SELECT DISTINCT ?s WHERE{
+?o a dbo:Automobile;dbp:name ?n.?o dbo:manufacturer ?s.
+FILTER(?o = <%res>)
+}
+=========================================================================================
+
+// Recuperer les successeurs / predecesseurs indirects 
+
+select ?p ?np where{
+<%res> a dbo:Automobile; dbo:predecessor+ ?p.
+?p rdfs:label ?np
+FILTER(langMatches(lang(?np),"EN"))
+}
+
+select ?s ?ns where{
+<%res> a dbo:Automobile;dbo:successor+ ?s.
+?s rdfs:label ?ns
+FILTER(langMatches(lang(?ns),"EN"))
+}
