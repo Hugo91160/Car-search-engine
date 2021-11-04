@@ -1,0 +1,11 @@
+========================================================================================
+SELECT DISTINCT ?o  ?s WHERE{
+?o a dbo:Automobile . ?o dbo:manufacturer ?s .
+FILTER(?s = dbr:Suzuki)
+}
+
+SELECT DISTINCT ?s WHERE{
+?o a dbo:Automobile;dbp:name ?n.?o dbo:manufacturer ?s.
+FILTER(regex(?n,".*Suzuki Celerio.*","i"))
+}
+=========================================================================================
