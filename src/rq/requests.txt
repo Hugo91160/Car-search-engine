@@ -47,4 +47,15 @@ FILTER(?carname = <http://dbpedia.org/resource/Porsche_911> && lang(?label) = "e
 GROUP BY ?imagelink ?label ?carname ?abstract ?brand ?class ?length ?height ?weight
 ====================================================================================
 Requête pour récupérer les informations du constructeurs 
+SELECT  ?abstract ?label ?brand ?link ?reflogo
+WHERE 
+{
+OPTIONAL{ ?brand dbo:abstract ?abstract .}
+OPTIONAL{ ?brand rdfs:label ?label .}
+OPTIONAL { ?brand foaf:homepage ?link.}
+OPTIONAL { ?brand dbp:logo ?reflogo.}
 
+FILTER(?brand = <http://dbpedia.org/resource/Porsche>&& lang(?label) = "en" && lang(?abstract) = "en" )
+}
+
+===================================================================================
