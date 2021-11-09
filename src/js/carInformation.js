@@ -2,15 +2,15 @@ function search_car_information(){
     var research_value = document.getElementById("search-value").value;
     console.log("Call of search basic car information")
     var resource = search_resource_name(get_car_info, research_value)
-
+    search_constructor_cars();
 }
 
 function get_car_info(res) {
 
-    //Request : 
+    //Request :
     var array = [["val", res]];
     var query = `SELECT  ?label ?brand ?abstract ?length ?height ?weight ?imagelink ?carname ?class (GROUP_CONCAT(?year, ", ") AS ?prod)
-        WHERE 
+        WHERE
         {
             OPTIONAL {?carname rdfs:label ?label.}
             OPTIONAL { ?carname dbo:thumbnail ?imagelink.}
@@ -21,16 +21,16 @@ function get_car_info(res) {
             OPTIONAL {?carname dbo:length ?length.}
             OPTIONAL {?carname dbo:height ?height.}
             OPTIONAL {?carname dbo:weight ?weight.}
-            
+
             FILTER(?carname = <%val%> && lang(?label) = "en" && lang(?abstract) = "en")
         }
         GROUP BY ?imagelink ?label ?carname ?abstract ?brand ?class ?length ?height ?weight
     `;
 
     getResult(query, array,displayCarInfo)
-   
+
 }
 
 function displayCarInfo(data){
     //affichage data
-}   
+}

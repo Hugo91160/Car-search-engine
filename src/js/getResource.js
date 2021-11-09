@@ -2,8 +2,8 @@ function search_resource_name(processResult,research_value){
     console.log(research_value)
 
     var array = [["val", research_value]];
-    var query = `select distinct ?s ?n 
-    where{ 
+    var query = `select distinct ?s ?n
+    where{
         {{?s a dbo:Automobile.}
         UNION
         {?x a dbo:Automobile; dbo:manufacturer ?s.}}
@@ -20,7 +20,7 @@ function search_resource_name(processResult,research_value){
         } else {
             res = undefined
         }
-        
+
     });
 
 }

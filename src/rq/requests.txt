@@ -2,17 +2,17 @@
 // Recuperer les vehicules du constructeur
 
 SELECT DISTINCT ?o WHERE{
-?o a dbo:Automobile . ?o dbo:manufacturer <%res> .
+?o a dbo:Automobile . ?o dbo:manufacturer <%res%> .
 }
 
-// Recuperer le constructeur vehicules
+// Recuperer le nom du constructeur vehicules
 SELECT DISTINCT ?s WHERE{
 ?o a dbo:Automobile;dbp:name ?n.?o dbo:manufacturer ?s.
-FILTER(?o = <%res>)
+FILTER(?o = <%res%>)
 }
 =========================================================================================
 
-// Recuperer les successeurs / predecesseurs indirects 
+// Recuperer les successeurs / predecesseurs indirects
 
 select ?p ?np where{
 <%res> a dbo:Automobile; dbo:predecessor+ ?p.
@@ -28,9 +28,9 @@ FILTER(langMatches(lang(?ns),"EN"))
 
 
 =====================================================================================
-Requête pour les informations de base sur la voiture 
+Requête pour les informations de base sur la voiture
 SELECT  ?label ?brand ?abstract ?length ?height ?weight ?imagelink ?carname ?class (GROUP_CONCAT(?year, ", ") AS ?prod)
-WHERE 
+WHERE
 {
 OPTIONAL {?carname rdfs:label ?label.}
 OPTIONAL { ?carname dbo:thumbnail ?imagelink.}
@@ -46,9 +46,9 @@ FILTER(?carname = <http://dbpedia.org/resource/Porsche_911> && lang(?label) = "e
 }
 GROUP BY ?imagelink ?label ?carname ?abstract ?brand ?class ?length ?height ?weight
 ====================================================================================
-Requête pour récupérer les informations du constructeurs 
+Requête pour récupérer les informations du constructeurs
 SELECT  ?abstract ?label ?brand ?link ?reflogo
-WHERE 
+WHERE
 {
 OPTIONAL{ ?brand dbo:abstract ?abstract .}
 OPTIONAL{ ?brand rdfs:label ?label .}
