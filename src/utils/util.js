@@ -9,7 +9,7 @@ function getResult(query,array,processResult) {
     var params = "query=" + encodeURIComponent(query) + "&default-graph-uri=" + encodeURIComponent("http://dbpedia.org") + "&format=json";
     
 
-    console.log("request : "+ url + "?" + params);
+    //console.log("request : "+ url + "?" + params);
     // Requête HTTP et affichage des résultats
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
