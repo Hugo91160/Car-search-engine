@@ -26,7 +26,7 @@ function get_car_info(res) {
         GROUP BY ?imagelink ?label ?carname ?abstract ?brand ?class ?length ?height ?weight
     `;
 
-    getResult(query, array,displayCarInfo)
+    getResult(query, array,displayCarInfo , "car Info")
    
 }
 

@@ -13,7 +13,7 @@ function autoComplete() {
 	}`;
 
 		var array = [["val", research_value]];
-		getResult(query,array, remplacerAutoComplete);
+		getResult(query,array, remplacerAutoComplete , "auto complete");
 	} else {
 		document.getElementById("vehicle-auto-completion").innerHTML = "";
 	}

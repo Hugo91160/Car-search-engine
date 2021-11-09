@@ -1,4 +1,4 @@
-function getResult(query,array,processResult) {
+function getResult(query,array,processResult, type) {
     for (var i = 0; i<array.length; i++)
     {
         query = query.replace("%" + array[i][0] + "%",array[i][1]);
@@ -15,7 +15,7 @@ function getResult(query,array,processResult) {
     xmlhttp.onreadystatechange = function () {
         
         if (this.readyState == 4 && this.status == 200) {
-            console.log("response :" +  this.responseText);
+            console.log("response for "+ type + " :" +  this.responseText);
             var results = JSON.parse(this.responseText);
             processResult(results);
         }

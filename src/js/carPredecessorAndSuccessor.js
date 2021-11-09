@@ -24,8 +24,8 @@ function get_car_relatives (res){
 
     var array = [["res", res]];
 
-    getResult(query1, array,displayCarPredecessor);
-    getResult(query2, array,displayCarSuccessor);
+    getResult(query1, array,displayCarPredecessor , "predecessor");
+    getResult(query2, array,displayCarSuccessor, "successor");
 }
 
 function displayCarPredecessor(data){

@@ -19,6 +19,6 @@ function search_resource_name(processResult,research_value){
             res = undefined
         }
         
-    });
+    } , "resource name");
 
 }
