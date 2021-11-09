@@ -17,3 +17,23 @@ html {
 form {
     width: 75%;
 }
+
+table {
+  width:  100%;
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+}
+.scrollingTable {
+  width: 30em;
+  overflow-y: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr:nth-child(n + 4) {
+  visibility: hidden;
+}
