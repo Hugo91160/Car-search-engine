@@ -20,7 +20,7 @@
             <div class="container justify-content-center align-items-center container">
             
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Entrez une marque ou un modèle" aria-label="Search" id="search-value">
+                <input list="vehicle-auto-completion" oninput="autoComplete()" class="form-control me-2" type="search" placeholder="Entrez une marque ou un modèle" aria-label="Search" id="search-value">
             </form>
             <button class="btn btn-outline-success" onclick="rechercher()">Search</button>
             </div>
@@ -34,10 +34,14 @@
 
 
 
+	<datalist id="vehicle-auto-completion">
+	</datalist>
 
     <!-- Optional JavaScript -->
 
-    <script src="./js/script.js"></script>
+    <script src="./utils/util.js"></script>
+    <script src="./js/autoComplete.js"></script>
+    <script src="./js/test.js"></script>
         
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

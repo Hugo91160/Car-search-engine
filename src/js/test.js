@@ -1,5 +1,4 @@
 function rechercher() {
-    console.log("first call");
     var research_value = document.getElementById("search-value").value;
     
     //Ecrire la requête en dur
