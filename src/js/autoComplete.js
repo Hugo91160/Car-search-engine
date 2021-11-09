@@ -28,7 +28,7 @@ function remplacerAutoComplete(data) {
     {
 		options = "";
 		for (var i=0; i<data.results.bindings.length; ++i) {
-			console.log(data.results.bindings[i].n.value);
+			//console.log(data.results.bindings[i].n.value);
 			options += '<option value="'+data.results.bindings[i].n.value+'">'+data.results.bindings[i].n.value+'</option>';
 		}
 		document.getElementById("vehicle-auto-completion").innerHTML = options;

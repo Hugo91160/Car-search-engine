@@ -1,6 +1,4 @@
 function search_resource_name(processResult,research_value){
-    console.log(research_value)
-
     var array = [["val", research_value]];
     var query = `select distinct ?s ?n
     where{
