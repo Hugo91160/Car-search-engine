@@ -18,7 +18,7 @@ function search_resource_name(processResult,research_value){
         } else {
             res = undefined
         }
-
-    });
+        
+    } , "resource name");
 
 }
