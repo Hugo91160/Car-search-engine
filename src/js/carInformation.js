@@ -1,8 +1,7 @@
 function search_car_information(){
     var research_value = document.getElementById("search-value").value;
-    console.log("Call of search basic car information")
+    //console.log("Call of search basic car information")
     var resource = search_resource_name(get_car_info, research_value)
-
 }
 
 function get_car_info(res) {
