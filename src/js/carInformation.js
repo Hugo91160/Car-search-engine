@@ -6,7 +6,7 @@ function search_car_information(){
 }
 
 function get_car_info(res) {
-
+    console.log("Resultat  : "+res)
     //Request : 
     var array = [["val", res]];
     var query = `SELECT  ?label ?brand ?abstract ?length ?height ?weight ?imagelink ?carname ?class (GROUP_CONCAT(?year, ", ") AS ?prod)
@@ -32,5 +32,8 @@ function get_car_info(res) {
 }
 
 function displayCarInfo(data){
-    //affichage data
+    //afficher les infos cars 
+    brand_information(data.results.bindings[0].brand.value)
+
+    //appel de la requête constructeur info + diisplay
 }   
