@@ -1,6 +1,4 @@
-function search_resource_name(processResult){
-    //var research_value = document.getElementById("search-value").value;
-    var research_value = "PorScHe 911"
+function search_resource_name(processResult,research_value){
     console.log(research_value)
 
     var array = [["val", research_value]];
