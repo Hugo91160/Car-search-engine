@@ -13,10 +13,10 @@ function get_constructor_cars (res){
         }
     `;
 
-    getResult(query, array,displayCarInfo , "constructor cars")
+    getResult(query, array,displayConstructorCarsInfo , "constructor cars")
 
 }
 
-function displayCarInfo(data){
+function displayConstructorCarsInfo(data){
     //affichage data
 }   

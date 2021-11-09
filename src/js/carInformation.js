@@ -33,6 +33,6 @@ function get_car_info(res) {
 function displayCarInfo(data){
     //afficher les infos cars 
     brand_information(data.results.bindings[0].brand.value)
-
+    console.log(data.results.bindings[0].brand.value)
     //appel de la requête constructeur info + diisplay
 }   
