@@ -22,7 +22,7 @@ function get_brand_info(res){
 
 function displayBrandInfo(data){
     //affichage des infos de la marque
-    var URLlogo = getlogo(date.results.bindings[0].reflogo.value)
+    var URLlogo = getlogo(data.results.bindings[0].reflogo.value)
     //create an img element in the div with src=URLlogo
 
 }   

@@ -1,10 +1,3 @@
-function search_car_relatives(){
-    var research_value = document.getElementById("search-value").value;
-    //console.log("Call of search car relatives")
-    var resource = search_resource_name(get_car_relatives, research_value)
-
-}
-
 function get_car_relatives (res){
     //requests:
     var query1 = `
