@@ -4,7 +4,7 @@ function get_constructor_cars (res){
     //Request : 
     var array = [["res", res]];
     var query = `
-    SELECT ?o ?n (GROUP_CONCAT(?sy, "/") AS ?y) (GROUP_CONCAT(?sc, "/") AS ?c) WHERE{
+    SELECT ?o ?n (GROUP_CONCAT(?sy, ", ") AS ?y) (GROUP_CONCAT(?sc, ", ") AS ?c) WHERE{
         ?o a dbo:Automobile; 
         dbo:manufacturer <%res%>;
         rdfs:label ?n.

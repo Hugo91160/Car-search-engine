@@ -11,3 +11,9 @@ function found_name(res) {
     get_car_relatives(res);
     get_constructor_cars(res);
 }
+
+function displayManufacturer (res){
+	profile = document.getElementById("profile_result");
+	profile.innerHTML = "";
+    get_constructor_cars(res);
+}
