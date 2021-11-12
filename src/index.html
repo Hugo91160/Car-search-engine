@@ -14,35 +14,32 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="bg-img">
-        <nav class="navbar navbar-light bg-light fixed">
-            <a class="navbar-brand">Car search engine</a>
-            <div class="container justify-content-center align-items-center container">
+    
+    <nav class="navbar navbar-light bg-light fixed">
+        <a class="navbar-brand">Car search engine</a>
+        <div class="container justify-content-center align-items-center container">
 
-            <form class="d-flex">
-                <input list="vehicle-auto-completion" oninput="autoComplete()" class="form-control me-2" type="search" placeholder="Entrez une marque ou un modèle" aria-label="Search" id="search-value">
-            </form>
-            <button class="btn btn-outline-success" onclick="Search()">Search</button>
-            </div>
-        </nav>
+        <form class="d-flex">
+            <input list="vehicle-auto-completion" oninput="autoComplete()" class="form-control me-2" type="search" placeholder="Entrez une marque ou un modèle" aria-label="Search" id="search-value">
+        </form>
+        <button class="btn btn-outline-success" onclick="Search()">Search</button>
+        </div>
+    </nav>
 
-        <table class="table table-dark table-hover table-responsive" id="results-table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Model name</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Class</th>
-                </tr>
-            </thead>
-            <tbody id="results-table-body">
-                   
-            </tbody>
-        </table>
+    <table class="table table-dark table-hover table-responsive" id="results-table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Model name</th>
+                <th scope="col">Year</th>
+                <th scope="col">Class</th>
+            </tr>
+        </thead>
+        <tbody id="results-table-body">
+                
+        </tbody>
+    </table>
 
-
-
-    </div>
 
     <div class="container" id="result">
 

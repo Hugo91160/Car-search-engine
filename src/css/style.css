@@ -2,17 +2,13 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Background image while waiting for a search*/
-.bg-img {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url(../img/bg_img.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+body {
+  background-image: url(../img/bg_img.jpg);
+  background-size: auto;
 }
+
+/* Background image while waiting for a search*/
+
 
 form {
     width: 75%;
