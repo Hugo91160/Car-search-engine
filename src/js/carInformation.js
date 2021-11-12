@@ -1,4 +1,6 @@
 function get_car_info(res) {
+    var profile = document.getElementById("profile_result");
+    profile.innerHTML = "";
     console.log("Resultat  : "+res)
     //Request : 
     var array = [["val", res]];
@@ -29,9 +31,12 @@ function displayCarInfo(data){
 
     if (data.results.bindings.length>0) {
         var profile = document.getElementById("profile_result");
-        profile.innerHTML = '<p>'+data.results.bindings[0].abstract.value+'</p>';
+        profile.innerHTML = '<p id="profile_result">'+data.results.bindings[0].abstract.value+'</p>';
         brand_information(data.results.bindings[0].brand.value);
         console.log(data.results.bindings[0].brand.value);
+
+        var table = document.getElementById("results-table");
+        table.style.display = 'none';
     }
     //appel de la requête constructeur info + diisplay
 }   

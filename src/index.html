@@ -23,10 +23,11 @@
                 <input list="vehicle-auto-completion" oninput="autoComplete()" class="form-control me-2" type="search" placeholder="Entrez une marque ou un modèle" aria-label="Search" id="search-value">
             </form>
             <button class="btn btn-outline-success" onclick="Search()">Search</button>
+            <button class="btn btn-outline-info" style="display:none;" onclick="return_to_table()" id="returnButton">Return to Table</button>
             </div>
         </nav>
 
-        <table class="table table-dark table-hover table-responsive" id="results-table">
+        <table class="table table-dark table-hover table-responsive" id="results-table" style="display:none;">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -41,8 +42,7 @@
         </table>
 
 
-    <div class="container" id="profile_result"> a remplire 
-
+    <div class="container" id="profile_result" style="color:white;">
     </div>
 
     </div>
@@ -64,6 +64,7 @@
     <script src="./js/constructorCars.js"></script>
     <script src="./js/requestLogo.js"></script>
     <script src="./js/brandInformation.js"></script>
+    <script src="./js/displayReturnButton.js"></script>
         
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

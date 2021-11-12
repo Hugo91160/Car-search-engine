@@ -1,4 +1,6 @@
 function get_constructor_cars (res){
+    var tbody = document.getElementById("results-table-body");
+    tbody.innerHTML = "";
     //Request : 
     var array = [["res", res]];
     var query = `
@@ -33,7 +35,10 @@ function displayConstructorCarsInfo(data){
     //affichage data
     var tbody = document.getElementById("results-table-body");
     tbody.innerHTML = "";
-   
+    var table = document.getElementById("results-table");
+    if (data.results.bindings.length>0) {
+        table.style.display = 'block';
+    }
   
     for (let i = 0; i < data.results.bindings.length; i++) {
             var row = tbody.insertRow();
@@ -47,6 +52,7 @@ function displayConstructorCarsInfo(data){
             cell2.innerHTML = name;
             row.link = link;
             row.onclick = function(e) {
+                display_return_button(true);
                 get_car_info(this.link);
                 get_car_relatives(this.link);
             };
@@ -64,7 +70,4 @@ function displayConstructorCarsInfo(data){
             cell4.innerHTML = classe;
             console.log(data.results.bindings[i].o.value)
     }
-
-    
-    console.log(data.results.bindings[5].o.value)
 }   
