@@ -22,6 +22,7 @@ function get_constructor_cars (res){
         }
         FILTER(lang(?n) = "en")
         } GROUP BY ?o ?n
+        ORDER BY ?n
     `;
 
     getResult(query, array,displayConstructorCarsInfo , "constructor cars")
@@ -50,12 +51,12 @@ function displayConstructorCarsInfo(data){
                 get_car_relatives(this.link);
             };
             console.log(link);
-            var year = "";
-            if (data.results.bindings[i].y!==undefined) {
+            var year = "Unknown";
+            if (data.results.bindings[i].y.value!="") {
                 year = data.results.bindings[i].y.value;
             }
-            var classe = "";
-            if (data.results.bindings[i].c!==undefined) {
+            var classe = "Unknown";
+            if (data.results.bindings[i].c.value!="") {
                 classe = data.results.bindings[i].c.value;
             }
             
