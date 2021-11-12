@@ -5,6 +5,7 @@ function get_car_info(res) {
     var query = `SELECT  ?label ?brand ?abstract ?length ?height ?weight ?imagelink ?carname ?class (GROUP_CONCAT(?year, ", ") AS ?prod)
         WHERE
         {
+            ?carname a dbo:Automobile.
             ?carname rdfs:label ?label.
             OPTIONAL { ?carname dbo:thumbnail ?imagelink.}
             OPTIONAL { ?carname dbp:production ?year.}
@@ -25,7 +26,12 @@ function get_car_info(res) {
 
 function displayCarInfo(data){
     //afficher les infos cars 
-    brand_information(data.results.bindings[0].brand.value)
-    console.log(data.results.bindings[0].brand.value)
+
+    if (data.results.bindings.length>0) {
+        var profile = document.getElementById("profile_result");
+        profile.innerHTML = '<p>'+data.results.bindings[0].abstract.value+'</p>';
+        brand_information(data.results.bindings[0].brand.value);
+        console.log(data.results.bindings[0].brand.value);
+    }
     //appel de la requête constructeur info + diisplay
 }   
