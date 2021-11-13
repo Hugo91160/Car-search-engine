@@ -4,7 +4,7 @@ function get_car_info(res) {
     console.log("Resultat  : "+res)
     //Request : 
     var array = [["val", res]];
-    var query = `SELECT  ?label (GROUP_CONCAT(?sb, ",") AS ?brand) ?abstract ?length ?height ?weight ?imagelink ?carname (GROUP_CONCAT(?sy, ", ") AS ?year) (GROUP_CONCAT(?sc, ", ") AS ?class)
+    var query = `SELECT  ?label (GROUP_CONCAT(?sb, "|") AS ?brand) ?abstract ?length ?height ?weight ?imagelink ?carname (GROUP_CONCAT(?sy, ", ") AS ?year) (GROUP_CONCAT(?sc, ", ") AS ?class)
         WHERE
         {
             ?carname a dbo:Automobile.
@@ -15,7 +15,12 @@ function get_car_info(res) {
             OPTIONAL {?carname dbo:height ?height.}
             OPTIONAL {?carname dbo:weight ?weight.}
             {
-            {?carname dbo:manufacturer ?sb.}
+            {SELECT ?carname (CONCAT(CONCAT(?b, ","),?nb) AS ?sb)
+			WHERE {
+			?carname dbo:manufacturer ?b.
+			?b rdfs:label ?nb.
+			FILTER(lang(?nb) = "en")
+			}}
             UNION
             {?carname dbp:class ?sc.
             FILTER(lang(?sc) = "en")}
@@ -48,7 +53,19 @@ function displayCarInfo(data){
         profile.innerHTML = "<h1>"+data.results.bindings[0].label.value+"</h1>";
         profile.innerHTML += '<p id="profile_result">'+data.results.bindings[0].abstract.value+'</p>';
         profile.innerHTML += "<p>Production date: "+data.results.bindings[0].year.value+"</p>";
-        profile.innerHTML += "<p>Manufacturer: <button onclick='displayManufacturer(\""+data.results.bindings[0].brand.value+"\")'>"+data.results.bindings[0].brand.value+"</button></p>";
+		var mans = data.results.bindings[0].brand.value.split("|");
+			if (mans.length>1 || mans[0]!="") {
+			if (mans.length>1) {
+				profile.innerHTML += "<p>Manufacturers: "
+			} else {
+				profile.innerHTML += "<p>Manufacturer: "
+			}
+			for (var i=0; i<mans.length; ++i) {
+				var man_entry = mans[i].split(",")
+				profile.innerHTML += "<button onclick='displayManufacturer(\""+man_entry[0]+"\")'>"+man_entry[1]+"</button>";
+			}
+			profile.innerHTML += "</p>"
+		}
         //brand_information(data.results.bindings[0].brand.value);
         console.log(data.results.bindings[0].brand.value);
 
