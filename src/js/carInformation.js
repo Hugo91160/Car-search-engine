@@ -54,14 +54,14 @@ function displayCarInfo(data){
         profile.innerHTML += '<p id="profile_result">'+data.results.bindings[0].abstract.value+'</p>';
         profile.innerHTML += "<p>Production date: "+data.results.bindings[0].year.value+"</p>";
 		var mans = data.results.bindings[0].brand.value.split("|");
-			if (mans.length>1 || mans[0]!="") {
+		if (mans.length>1 || mans[0]!="") {
 			if (mans.length>1) {
 				profile.innerHTML += "<p>Manufacturers: "
 			} else {
 				profile.innerHTML += "<p>Manufacturer: "
 			}
 			for (var i=0; i<mans.length; ++i) {
-				var man_entry = mans[i].split(",")
+				var man_entry = mans[i].split(",");
 				profile.innerHTML += "<button onclick='displayManufacturer(\""+man_entry[0]+"\")'>"+man_entry[1]+"</button>";
 			}
 			profile.innerHTML += "</p>"
