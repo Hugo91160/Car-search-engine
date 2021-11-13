@@ -52,7 +52,33 @@ function displayCarInfo(data){
         var profile = document.getElementById("profile_result");
         profile.innerHTML = "<h1>"+data.results.bindings[0].label.value+"</h1>";
         profile.innerHTML += '<p id="profile_result">'+data.results.bindings[0].abstract.value+'</p>';
-        profile.innerHTML += "<p>Production date: "+data.results.bindings[0].year.value+"</p>";
+
+       
+        if (data.results.bindings[0].year.value!="") {
+                profile.innerHTML += "<p>Production date: "+data.results.bindings[0].year.value+"</p>";
+        }else{
+            profile.innerHTML += "<p>Production date: Unknown </p>";
+        }
+        if (data.results.bindings[0].class.value!="") {
+                profile.innerHTML += "<p>Class: "+data.results.bindings[0].class.value+"</p>";
+        }else{
+            profile.innerHTML += "<p>Class: Unknown </p>";
+        }
+        if ( data.results.bindings[0].length === undefined ) {
+            profile.innerHTML += "<p>Length: Unknown</p>";
+        }else{
+            profile.innerHTML += "<p>Length: "+data.results.bindings[0].length.value+"</p>";
+        }
+        if ( data.results.bindings[0].height === undefined ) {
+            profile.innerHTML += "<p>Height: Unknown</p>";
+        }else{
+            profile.innerHTML += "<p>Height: "+data.results.bindings[0].height.value+"</p>";
+        }
+        if ( data.results.bindings[0].weight === undefined ) {
+            profile.innerHTML += "<p>Weight: Unknown</p>";
+        }else{
+            profile.innerHTML += "<p>Weight: "+data.results.bindings[0].weight.value+"</p>";
+        }
 		var mans = data.results.bindings[0].brand.value.split("|");
 		if (mans.length>1 || mans[0]!="") {
 			if (mans.length>1) {
@@ -72,7 +98,11 @@ function displayCarInfo(data){
         var table = document.getElementById("results-table");
         table.style.display = 'none';
 
-        profile.innerHTML += "<img src='"+data.results.bindings[0].imagelink.value+"' />"
+        if ( data.results.bindings[0].imagelink === undefined ) {
+            profile.innerHTML += "<img src='img/carDefaultImage.png' ";
+        }else{
+            profile.innerHTML += "<img src='"+data.results.bindings[0].imagelink.value+"' />"
+        }
     }
     //appel de la requête constructeur info + diisplay
 }   
