@@ -99,7 +99,7 @@ function displayCarInfo(data){
         table.style.display = 'none';
 
         if ( data.results.bindings[0].imagelink === undefined ) {
-            profile.innerHTML += "<img src='img/carDefaultImage.png' ";
+            profile.innerHTML += "<img src='img/carDefaultImage.png' width='300'  />";
         }else{
             profile.innerHTML += "<img src='"+data.results.bindings[0].imagelink.value+"' />"
         }
