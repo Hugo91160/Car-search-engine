@@ -15,5 +15,8 @@ function return_to_table (){
 	profile.innerHTML = "";
 	table = document.getElementById("results-table");
 	table.style.display = "";
-
+    var pred = document.getElementById("pred_result");
+	pred.style.display = 'none';
+    var succ = document.getElementById("succ_result");
+	succ.style.display = 'none';
 }

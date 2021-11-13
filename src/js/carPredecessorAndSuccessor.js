@@ -1,18 +1,52 @@
 function get_car_relatives (res){
+    var pred = document.getElementById("pred_result");
+	pred.style.display = 'none';
+    var succ = document.getElementById("succ_result");
+	succ.style.display = 'none';
     //requests:
     var query1 = `
-    select ?p ?np where{
-        <%res%> a dbo:Automobile; dbo:predecessor+ ?p.
-        ?p rdfs:label ?np
-        FILTER(langMatches(lang(?np),"EN"))
+		SELECT ?o ?n (GROUP_CONCAT(?sy, ", ") AS ?y) (GROUP_CONCAT(?sc, ", ") AS ?c) WHERE{
+        <%res%> a dbo:Automobile; dbo:predecessor+ ?o.
+        ?o rdfs:label ?n.
+        {
+        {?o dbp:class ?sc.
+        FILTER(regex(?sc,".") && lang(?sc) = "en")}
+        UNION
+        {?o dbp:class ?x.
+        ?x rdfs:label ?sc.
+        FILTER(regex(?sc,".") && lang(?sc) = "en")}
+        UNION
+        {?o dbp:production ?sy.
+        FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1000 && xsd:integer(?sy)<year(now())))
         }
+        UNION
+        {}
+        }
+        FILTER(lang(?n) = "en")
+        } GROUP BY ?o ?n
+        ORDER BY ?n
     `;
     var query2 =`
-    select ?s ?ns where{
-        <%res%> a dbo:Automobile;dbo:successor+ ?s.
-        ?s rdfs:label ?ns
-        FILTER(langMatches(lang(?ns),"EN"))
+		SELECT ?o ?n (GROUP_CONCAT(?sy, ", ") AS ?y) (GROUP_CONCAT(?sc, ", ") AS ?c) WHERE{
+        <%res%> a dbo:Automobile; dbo:successor+ ?o.
+        ?o rdfs:label ?n.
+        {
+        {?o dbp:class ?sc.
+        FILTER(regex(?sc,".") && lang(?sc) = "en")}
+        UNION
+        {?o dbp:class ?x.
+        ?x rdfs:label ?sc.
+        FILTER(regex(?sc,".") && lang(?sc) = "en")}
+        UNION
+        {?o dbp:production ?sy.
+        FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1000 && xsd:integer(?sy)<year(now())))
         }
+        UNION
+        {}
+        }
+        FILTER(lang(?n) = "en")
+        } GROUP BY ?o ?n
+        ORDER BY ?n
     `;
 
     var array = [["res", res]];
@@ -22,9 +56,30 @@ function get_car_relatives (res){
 }
 
 function displayCarPredecessor(data){
+    var pred = document.getElementById("pred_result");
+    if (data.results.bindings.length>0) {
+        pred.style.display = 'block';
+    } else {
+        pred.style.display = 'none';
+	}
     //affichage data
+    var tbody = document.getElementById("pred-table-body");
+    var table = document.getElementById("pred-table");
+	
+	displayCarTable(data, tbody, table, false);
 }   
 
 function displayCarSuccessor(data){
+    var succ = document.getElementById("succ_result");
+    if (data.results.bindings.length>0) {
+        succ.style.display = 'block';
+    } else {
+        succ.style.display = 'none';
+	}
+	
     //affichage data
+    var tbody = document.getElementById("succ-table-body");
+    var table = document.getElementById("succ-table");
+	
+	displayCarTable(data, tbody, table, false);
 }  
