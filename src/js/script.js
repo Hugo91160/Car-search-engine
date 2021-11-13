@@ -15,5 +15,9 @@ function found_name(res) {
 function displayManufacturer (res){
 	profile = document.getElementById("profile_result");
 	profile.innerHTML = "";
+    var pred = document.getElementById("pred_result");
+	pred.style.display = 'none';
+    var succ = document.getElementById("succ_result");
+	succ.style.display = 'none';
     get_constructor_cars(res);
 }
