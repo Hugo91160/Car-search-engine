@@ -49,60 +49,86 @@ function displayCarInfo(data){
     //afficher les infos cars 
 
     if (data.results.bindings.length>0) {
+		var profile = document.getElementById("car_profile");
+		profile.style.display = "";
         var profile = document.getElementById("profile_result");
-        profile.innerHTML = "<h1>"+data.results.bindings[0].label.value+"</h1>";
-        profile.innerHTML += '<p id="profile_result">'+data.results.bindings[0].abstract.value+'</p>';
-
-       
+		var inner = "<h1 class='title_profile'>"+data.results.bindings[0].label.value+"</h1>";
+		inner += "<div class='row'>";
+        inner += "<div class='abstract col-8'><p>"+data.results.bindings[0].abstract.value+'</p></div>';
+		inner += "<div class='image_profile col-4'>";
+        if ( data.results.bindings[0].imagelink === undefined ) {
+            inner += "<img src='img/carDefaultImage.png' />";
+        }else{
+            inner += "<img src='"+data.results.bindings[0].imagelink.value+"' />"
+        }
+		inner += "</div>";
+		inner += "</div>";
+		inner += "<br/>";
+		inner += "<div class='row'>";
+        inner += "<div class='offset-1 col-4 key_point'><p>Production date<br/>";
         if (data.results.bindings[0].year.value!="") {
-                profile.innerHTML += "<p>Production date: "+data.results.bindings[0].year.value+"</p>";
+            inner += "<span class='key_value'>"+data.results.bindings[0].year.value+"</span>";
         }else{
-            profile.innerHTML += "<p>Production date: Unknown </p>";
+            inner += "Unknown";
         }
+		inner += "</p></div>";
+        inner += "<div class='offset-2 col-4 key_point'><p>Class<br/>";
         if (data.results.bindings[0].class.value!="") {
-                profile.innerHTML += "<p>Class: "+data.results.bindings[0].class.value+"</p>";
+            inner += "<span class='key_value'>"+data.results.bindings[0].class.value+"</span>";
         }else{
-            profile.innerHTML += "<p>Class: Unknown </p>";
+            inner += "Unknown";
         }
+		inner += "</p></div>";
+		inner += "</div>";
+		inner += "<div class='row'>";
+        inner += "<div class='offset-3 col-2 key_point'><p>Length<br/>";
         if ( data.results.bindings[0].length === undefined ) {
-            profile.innerHTML += "<p>Length: Unknown</p>";
+            inner += "Unknown";
         }else{
-            profile.innerHTML += "<p>Length: "+data.results.bindings[0].length.value+"</p>";
+            inner += "<span class='key_value'>"+data.results.bindings[0].length.value+" m</span>";
         }
+		inner += "</p></div>";
+        inner += "<div class='col-2 key_point'><p>Height<br/>";
         if ( data.results.bindings[0].height === undefined ) {
-            profile.innerHTML += "<p>Height: Unknown</p>";
+            inner += "Unknown";
         }else{
-            profile.innerHTML += "<p>Height: "+data.results.bindings[0].height.value+"</p>";
+            inner += "<span class='key_value'>"+data.results.bindings[0].height.value+" m</span>";
         }
+		inner += "</p></div>";
+        inner += "<div class='col-2 key_point'><p>Weight<br/>";
         if ( data.results.bindings[0].weight === undefined ) {
-            profile.innerHTML += "<p>Weight: Unknown</p>";
+            inner += "Unknown";
         }else{
-            profile.innerHTML += "<p>Weight: "+data.results.bindings[0].weight.value+"</p>";
+            inner += "<span class='key_value'>"+(parseFloat(data.results.bindings[0].weight.value)/1000)+" kg</span>";
         }
+		inner += "</p></div>";
+		inner += "</div>";
+		inner += "<div class='row'>";
+        inner += "<div class='offset-1 col-10 key_point'><p>";
 		var mans = data.results.bindings[0].brand.value.split("|");
-		if (mans.length>1 || mans[0]!="") {
-			if (mans.length>1) {
-				profile.innerHTML += "<p>Manufacturers: "
-			} else {
-				profile.innerHTML += "<p>Manufacturer: "
-			}
-			for (var i=0; i<mans.length; ++i) {
-				var man_entry = mans[i].split(",");
-				profile.innerHTML += "<button onclick='displayManufacturer(\""+man_entry[0]+"\")'>"+man_entry[1]+"</button>";
-			}
-			profile.innerHTML += "</p>"
+		if (mans.length>1) {
+			inner += "Manufacturers"
+		} else {
+			inner += "Manufacturer"
 		}
+		inner += "<br/><span class='key_value'>"
+		for (var i=0; i<mans.length; ++i) {
+			var man_entry = mans[i].split(",");
+			if (i!=0) {
+				inner += " &centerdot; "
+			}
+			inner += "<a href='#' onclick='displayManufacturer(\""+man_entry[0]+"\")'>"+man_entry[1]+"</a>";
+		}
+		inner += "</span></p></div>";
+		inner += "</div>";
+		
+		profile.innerHTML = inner;
         //brand_information(data.results.bindings[0].brand.value);
         console.log(data.results.bindings[0].brand.value);
 
         var table = document.getElementById("results-table");
         table.style.display = 'none';
 
-        if ( data.results.bindings[0].imagelink === undefined ) {
-            profile.innerHTML += "<img src='img/carDefaultImage.png' width='300'  />";
-        }else{
-            profile.innerHTML += "<img src='"+data.results.bindings[0].imagelink.value+"' />"
-        }
     }
     //appel de la requête constructeur info + diisplay
 }   

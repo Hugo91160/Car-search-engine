@@ -1,7 +1,7 @@
 function displayCarTable (data, tbody, table, return_button){
     tbody.innerHTML = "";
     if (data.results.bindings.length>0) {
-        table.style.display = 'block';
+        table.style = "";
     } else {
         table.style.display = 'none';
 	}

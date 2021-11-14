@@ -18,7 +18,9 @@ table {
   width:  100%;
 }
 
-
+nav {
+	margin-bottom: 20px;
+}
 
 .table-responsive {
   display: block;
@@ -34,4 +36,33 @@ h2 {
 }
 p {
   color: white;
+}
+
+.profile {
+  background-color: rgb(64,64,64);
+  padding: 10px 0;
+}
+
+.title_profile {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.image_profile > img {
+  width: 100%;
+}
+
+.abstract {
+  text-align: justify;
+}
+
+.key_point {
+  text-align: center;
+}
+.key_value {
+  font-size: 1.5em;
+}
+
+.table_container {
+  width: 100%;
 }

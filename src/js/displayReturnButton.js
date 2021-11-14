@@ -13,6 +13,8 @@ function return_to_table (){
 	display_return_button(false);
 	profile = document.getElementById("profile_result");
 	profile.innerHTML = "";
+	profile = document.getElementById("car_profile");
+	profile.style.display = "none";
 	table = document.getElementById("results-table");
 	table.style.display = "";
     var pred = document.getElementById("pred_result");

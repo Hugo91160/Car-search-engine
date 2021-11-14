@@ -15,6 +15,8 @@ function found_name(res) {
 function displayManufacturer (res){
 	profile = document.getElementById("profile_result");
 	profile.innerHTML = "";
+	profile = document.getElementById("car_profile");
+	profile.style.display = "none";
     var pred = document.getElementById("pred_result");
 	pred.style.display = 'none';
     var succ = document.getElementById("succ_result");
