@@ -21,8 +21,32 @@ function get_brand_info(res){
 }
 
 function displayBrandInfo(data){
+
+    if (data.results.bindings.length>0) {
+        var URLlogo = getlogo(data.results.bindings[0].label.value, data.results.bindings[0].reflogo.value);
+        console.log("URLlogo : " + URLlogo);
+		var brandInfo = document.getElementById("brand-info");
+		brandInfo.style.display = "";
+        var inner = "<h1 class='title_profile'>"+data.results.bindings[0].label.value+"</h1>";
+        inner += "<div class='row'>";
+        inner += "<div class='abstract col-8'><p>"+data.results.bindings[0].abstract.value+'</p></div>';
+		inner += "<div class='image_profile col-4'>";
+        if (URLlogo === undefined ) {
+            inner += "<img src='img/carDefaultImage.png' />";
+        }else{
+            inner += "<img src='"+URLlogo+"' />"
+        }
+		inner += "</div>";
+		inner += "</div>";
+		inner += "<br/>";
+
+
+        brandInfo.innerHTML = inner;
+        document.getElementById("brand-section").style.display = "";
+    }
+
     //affichage des infos de la marque
-    var URLlogo = getlogo(data.results.bindings[0].reflogo.value)
+    
     //create an img element in the div with src=URLlogo
 
 }   

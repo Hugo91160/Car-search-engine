@@ -10,6 +10,7 @@ function found_name(res) {
     get_car_info(res);
     get_car_relatives(res);
     get_constructor_cars(res);
+    get_brand_info(res);
 }
 
 function displayManufacturer (res){

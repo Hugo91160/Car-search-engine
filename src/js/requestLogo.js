@@ -1,4 +1,3 @@
-function getlogo(logoName){
-    logoName.replace(" ", "_")
-    return 'https://en.wikipedia.org/wiki/File:"'+logoName+'#/media/File:'+logoName;
+function getlogo(brandName, logoName){
+    return 'https://en.wikipedia.org/wiki/'+brandName+'#/media/File:'+logoName.replace(" ", "_");
 }
