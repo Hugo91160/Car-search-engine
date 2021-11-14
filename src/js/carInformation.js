@@ -126,9 +126,6 @@ function displayCarInfo(data){
         //brand_information(data.results.bindings[0].brand.value);
         console.log(data.results.bindings[0].brand.value);
 
-        var table = document.getElementById("results-table");
-        table.style.display = 'none';
-
     }
     //appel de la requête constructeur info + diisplay
 }   

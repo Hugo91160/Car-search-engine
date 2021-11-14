@@ -58,7 +58,7 @@ function get_car_relatives (res){
 function displayCarPredecessor(data){
     var pred = document.getElementById("pred_result");
     if (data.results.bindings.length>0) {
-        pred.style.display = 'block';
+        pred.style.display = '';
     } else {
         pred.style.display = 'none';
 	}
@@ -72,7 +72,7 @@ function displayCarPredecessor(data){
 function displayCarSuccessor(data){
     var succ = document.getElementById("succ_result");
     if (data.results.bindings.length>0) {
-        succ.style.display = 'block';
+        succ.style.display = '';
     } else {
         succ.style.display = 'none';
 	}

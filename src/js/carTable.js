@@ -1,11 +1,5 @@
 function displayCarTable (data, tbody, table, return_button){
     tbody.innerHTML = "";
-    if (data.results.bindings.length>0) {
-        table.style = "";
-    } else {
-        table.style.display = 'none';
-	}
-  
     for (let i = 0; i < data.results.bindings.length; i++) {
             var row = tbody.insertRow();
             var cell1 = row.insertCell(0);
@@ -20,6 +14,7 @@ function displayCarTable (data, tbody, table, return_button){
 			row.return_button = return_button;
             row.onclick = function(e) {
 				display_return_button(this.return_button);
+				document.getElementById("brand-section").style.display = "none";
                 get_car_info(this.link);
                 get_car_relatives(this.link);
             };

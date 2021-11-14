@@ -8,10 +8,11 @@ function get_brand_info(res){
     var query = `SELECT  ?abstract ?label ?brand ?link ?reflogo
         WHERE 
         {
+			?o a dbo:Automobile; dbo:manufacturer ?brand.
             OPTIONAL{ ?brand dbo:abstract ?abstract .}
             OPTIONAL{ ?brand rdfs:label ?label .}
             OPTIONAL { ?brand foaf:homepage ?link.}
-            OPTIONAL { ?brand dbp:logo ?reflogo.}
+            OPTIONAL { ?brand dbo:thumbnail ?reflogo.}
     
         FILTER(?brand = <%val%> && lang(?label) = "en" && lang(?abstract) = "en" )
         }
@@ -23,7 +24,8 @@ function get_brand_info(res){
 function displayBrandInfo(data){
 
     if (data.results.bindings.length>0) {
-        var URLlogo = getlogo(data.results.bindings[0].label.value, data.results.bindings[0].reflogo.value);
+        //var URLlogo = getlogo(data.results.bindings[0].label.value, data.results.bindings[0].reflogo.value);
+		var URLlogo = data.results.bindings[0].reflogo.value;
         console.log("URLlogo : " + URLlogo);
 		var brandInfo = document.getElementById("brand-info");
 		brandInfo.style.display = "";
