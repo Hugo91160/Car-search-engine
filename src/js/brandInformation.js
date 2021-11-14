@@ -26,7 +26,9 @@ function displayBrandInfo(data){
     if (data.results.bindings.length>0) {
         //var URLlogo = getlogo(data.results.bindings[0].label.value, data.results.bindings[0].reflogo.value);
         //var URLlogo = data.results.bindings[0].reflogo.value;
-		var URLlogo = "https://www.carlogos.org/car-logos/"+data.results.bindings[0].label.value.toLowerCase()+"-logo.png";
+        var brandName = data.results.bindings[0].label.value.toLowerCase();
+        if (brandName.localeCompare("Citroën")) {brandName = "citroen" ;}
+		var URLlogo = "https://www.carlogos.org/car-logos/"+brandName+"-logo.png";
         console.log("URLlogo : " + URLlogo);
 		var brandInfo = document.getElementById("brand-info");
 		brandInfo.style.display = "";
