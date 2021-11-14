@@ -28,8 +28,6 @@ function displayBrandInfo(data){
         //var URLlogo = data.results.bindings[0].reflogo.value;
         var brandName = (data.results.bindings[0].label.value.toLowerCase()).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         //if (brandName == "Citroën") {brandName = "citroen" ;}
-
-        var brandName = data.results.bindings[0].label.value.toLowerCase();
         //if (brandName.localeCompare("Citroën")) {brandName = "citroen" ;}
 		var URLlogo = "https://www.carlogos.org/car-logos/"+brandName+"-logo.png";
         console.log("URLlogo : " + URLlogo);
@@ -50,7 +48,7 @@ function displayBrandInfo(data){
     }
 
     //affichage des infos de la marquegit checkout main
-    
+
     
     //create an img element in the div with src=URLlogo
 
