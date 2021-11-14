@@ -26,8 +26,9 @@ function displayBrandInfo(data){
     if (data.results.bindings.length>0) {
         //var URLlogo = getlogo(data.results.bindings[0].label.value, data.results.bindings[0].reflogo.value);
         //var URLlogo = data.results.bindings[0].reflogo.value;
-        var brandName = data.results.bindings[0].label.value.toLowerCase();
-        if (brandName.localeCompare("Citroën")) {brandName = "citroen" ;}
+        var brandName = (data.results.bindings[0].label.value.toLowerCase()).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        //if (brandName == "Citroën") {brandName = "citroen" ;}
+
 		var URLlogo = "https://www.carlogos.org/car-logos/"+brandName+"-logo.png";
         console.log("URLlogo : " + URLlogo);
 		var brandInfo = document.getElementById("brand-info");
@@ -36,11 +37,7 @@ function displayBrandInfo(data){
         inner += "<div class='row'>";
         inner += "<div class='abstract col-8'><p>"+data.results.bindings[0].abstract.value+'</p></div>';
 		inner += "<div class='image_profile col-4'>";
-        if (URLlogo === undefined ) {
-            inner += "<img src='img/carDefaultImage.png' />";
-        }else{
-            inner += "<img src='"+URLlogo+"' />"
-        }
+        inner += "<img src='"+URLlogo+"' />"
 		inner += "</div>";
 		inner += "</div>";
 		inner += "<br/>";
