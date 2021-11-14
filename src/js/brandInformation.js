@@ -24,8 +24,6 @@ function get_brand_info(res){
 function displayBrandInfo(data){
 
     if (data.results.bindings.length>0) {
-        //var URLlogo = getlogo(data.results.bindings[0].label.value, data.results.bindings[0].reflogo.value);
-        //var URLlogo = data.results.bindings[0].reflogo.value;
         var brandName = data.results.bindings[0].label.value.toLowerCase();
         if (brandName.localeCompare("Citroën")) {brandName = "citroen" ;}
 		var URLlogo = "https://www.carlogos.org/car-logos/"+brandName+"-logo.png";
