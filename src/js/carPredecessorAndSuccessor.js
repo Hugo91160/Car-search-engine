@@ -17,7 +17,7 @@ function get_car_relatives (res){
         FILTER(regex(?sc,".") && lang(?sc) = "en")}
         UNION
         {?o dbp:production ?sy.
-        FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1000 && xsd:integer(?sy)<year(now())))
+        FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1500 && xsd:integer(?sy)<year(now())))
         }
         UNION
         {}
@@ -39,7 +39,7 @@ function get_car_relatives (res){
         FILTER(regex(?sc,".") && lang(?sc) = "en")}
         UNION
         {?o dbp:production ?sy.
-        FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1000 && xsd:integer(?sy)<year(now())))
+        FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1500 && xsd:integer(?sy)<year(now())))
         }
         UNION
         {}

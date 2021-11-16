@@ -4,12 +4,12 @@ function autoComplete() {
     
 	if (research_value.length>=3) {
 		//Ecrire la requête en dur
-		var query = `select distinct ?s ?n where{ 
+		var query = `select ?s ?n where{ 
 			{{?s a dbo:Automobile.}
 			UNION
 			{?x a dbo:Automobile; dbo:manufacturer ?s.}}
 			?s rdfs:label ?n.
-	FILTER(langMatches(lang(?n),"EN") && regex(?n, ".*%val%.*", "i"))
+	FILTER(langMatches(lang(?n),"EN") && regex(?n, "%val%", "i"))
 	}`;
 
 		var array = [["val", research_value]];

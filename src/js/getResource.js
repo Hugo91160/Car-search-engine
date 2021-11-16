@@ -3,7 +3,7 @@ function search_resource_name(processResult,research_value){
     //console.log(research_value);
     //console.log("xxxxxxxxxxxxxxxxxxxxxxxxx");
     var array = [["val", research_value]];
-    var query = `select distinct ?s ?n
+    var query = `select ?s ?n
     where{
         {{?s a dbo:Automobile.}
         UNION

@@ -30,7 +30,7 @@ function get_car_info(res) {
             FILTER(lang(?sc) = "en")}
             UNION
             {?carname dbp:production ?sy.
-            FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1000 && xsd:integer(?sy)<year(now())))
+            FILTER(regex(?sy,".") || (datatype(?sy) = xsd:integer && xsd:integer(?sy)>=1500 && xsd:integer(?sy)<year(now())))
             }
             UNION
             {}
